@@ -1,21 +1,53 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef _SHELL_H_
+#define _SHELL_H_
 
+/*
+ * File: shell.h
+ * Auth: Marggie Kalulu
+ */
+
+#include <fcntl.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
 #include <stdio.h>
-#include <sys/wait.h>
-#include <limits.h>
-#include <string.h>
 
-#define AND_OPERATOR 1
-#define OR_OPERATOR 2
-#define MAX_ARGS 50
+#define END_OF_FILE -2
+#define EXIT -3
 
-extern char **environ;
-void exit_check(int status, char *dir);
-void exit_check(int status, char *dir);
-char *split_string(char *str, const char *delim)
-int process_and_execute_command(char **args)
+/* Builtins */
+int (*retrieve_builtin(char *command))(char **args, char **front);
+int exit_shell(char **args, char **front);
+int execute_env(char **args, char __attribute__((__unused__)) **front);
+int execute_setenv(char **args, char __attribute__((__unused__)) **front);
+int execute_unsetenv(char **args, char __attribute__((__unused__)) **front);
+int change_dir(char **args, char __attribute__((__unused__)) **front);
+int execute_alias(char **args, char __attribute__((__unused__)) **front);
+int display_help(char **args, char __attribute__((__unused__)) **front);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif

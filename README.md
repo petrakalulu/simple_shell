@@ -1,21 +1,33 @@
-## SHELL PROJECT
+# Simple Shell Project 
 
-## Objectives
+This is a simple shell project created by Margaret Kalulu. 
 
-#### There are three objectives to this assignment:
+## Compilation 
 
-- To familiarize ourselves with the Linux programming environment.
+To compile the code, use the following command:
 
-- To learn how processes are created, destroyed, and managed.
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
 
-- To gain exposure to the necessary functionality in shells.
 
-## Overview
+This will compile all the `*.c` files in the current directory and create an executable file named `hsh`. 
 
-- In this assignment, we implemented a command line interpreter or, as it is more commonly known, a shell. The shell should operate in this basic way: when you type in a command (in response to its prompt), the shell creates a child process that executes the command you entered and then prompts for more user input when it has finished.
+To run the shell, use the following command:
 
-- The shells we implemented will be similar to, but simpler than, the one you run every day in Unix. You can find out which shell you are running by typing "echo $SHELL" at a prompt. You may then wish to look at the man pages for 'csh' or the shell you are running (more likely tcsh, or bash, or for those few wacky ones in the crowd, zsh or ksh) to learn more about all of the functionality that can be present. For this project, you do not need to implement too much functionality because its just a simple shell.
+./hsh
 
+
+## Usage 
+
+This simple shell project allows the user to enter commands just like a typical shell. The shell can handle built-in commands and external commands. 
+
+The following built-in commands are included: 
+
+- `exit`: Exits the shell. 
+- `env`: Prints the environment. 
+
+To run an external command, simply enter the name of the command followed by any arguments. For example:
+
+ls -l /tmp
 ## Program Specification
 
 ## Basic Shell
