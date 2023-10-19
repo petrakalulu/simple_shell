@@ -76,7 +76,8 @@ shift;
 (--help) show_usage;
 exit 0;
 (*) break;
-esac done
+esac
+	done
 (["$#" - lt 2]) && show_usage && exit 1
 }
 
