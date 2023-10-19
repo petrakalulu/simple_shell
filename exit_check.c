@@ -7,7 +7,7 @@
  * This function checks whether a command has exited normally and
  * whether its exit status is non-zero, printing an error message if so.
  */
-void exit_check(int status)
+void exit_check(int status, char *dir)
 {
 /* Check if the command exited normally. */
 if (WIFEXITED(status))
