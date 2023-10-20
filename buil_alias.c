@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int execute_alias_command(char **args, char __attribute__((__unused__)) **front);
+int execute_alias(char **args, char __attribute__((__unused__)) **front);
 void create_alias(char *var_name, char *value);
 void display_alias(alias_t *alias);
 
@@ -13,7 +13,7 @@ void display_alias(alias_t *alias);
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
  */
-int execute_alias_command(char **args, char __attribute__((__unused__)) **front)
+int execute_alias(char **args, char __attribute__((__unused__)) **front)
 {
 alias_t *temp = aliases;
 int m, ret = 0;

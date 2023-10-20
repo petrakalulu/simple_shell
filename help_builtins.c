@@ -28,9 +28,9 @@ display_help_text(msg);
  */
 void display_setenv_help(void)
 {
-char *msg = ("setenv: setenv [VARIABLE] [VALUE]\n\tInitializes a new"
-" environment variable, or modifies an existing one.\n\n"
-"\tUpon failure, prints a message to stderr.\n");
+char *msg = "setenv: setenv [VARIABLE] [VALUE]\n"
+"\tInitializes a new environment, or modifies an existing one.\n\n"
+"\tUpon failure, prints a message to stderr.\n";
 display_help_text(msg);
 }
 
@@ -39,9 +39,9 @@ display_help_text(msg);
  */
 void display_unsetenv_help(void)
 {
-char *msg = ("unsetenv: unsetenv [VARIABLE]\n\tRemoves an "
-"environmental variable.\n\n\tUpon failure, prints a "
-"message to stderr.\n");
+char *msg = "unsetenv: unsetenv [VARIABLE]\n"
+"\tRemoves an environmental variable.\n\n"
+"\tUpon failure, prints a message to stderr.\n";
 display_help_text(msg);
 }
 
