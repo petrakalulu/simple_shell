@@ -20,7 +20,7 @@ int (*retrieve_builtin(char *command))(char **args, char **front)
 		{ "unsetenv", execute_unsetenv },
 		{ "cd", change_dir },
 		{ "alias", execute_alias },
-		{ "help", dispaly_help },
+		{ "help", display_help },
 		{ NULL, NULL }
 	};
 	int m;
@@ -141,12 +141,12 @@ int change_dir(char **args, char __attribute__((__unused__)) **front)
 
 	dir_info[0] = "OLDPWD";
 	dir_info[1] = oldpwd;
-	if (shellby_setenv(dir_info, dir_info) == -1)
+	if (execute_setenv(dir_info, dir_info) == -1)
 		return (-1);
 
 	dir_info[0] = "PWD";
 	dir_info[1] = pwd;
-	if (shellby_setenv(dir_info, dir_info) == -1)
+	if (execute_setenv(dir_info, dir_info) == -1)
 		return (-1);
 	if (args[0] && args[0][0] == '-' && args[0][1] != '-')
 	{

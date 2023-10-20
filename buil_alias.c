@@ -23,7 +23,7 @@ if (!args[0])
 {
 while (temp)
 {
-print_alias(temp);
+display_alias(temp);
 temp = temp->next;
 }
 return (ret);
@@ -38,7 +38,7 @@ while (temp)
 {
 if (_strcmp(args[m], temp->name) == 0)
 {
-print_alias(temp);
+display_alias(temp);
 break;
 }
 temp = temp->next;
@@ -47,7 +47,7 @@ if (!temp)
 ret = create_error(args + m, 1);
 }
 else
-set_alias(args[m], value);
+create_alias(args[m], value);
 }
 return (ret);
 }
@@ -130,7 +130,7 @@ for (m = 0; args[m]; m++)
 temp = aliases;
 while (temp)
 {
-if (_strcmp(args[i], temp->name) == 0)
+if (_strcmp(args[m], temp->name) == 0)
 {
 new_value = malloc(sizeof(char) * (_strlen(temp->value) + 1));
 if (!new_value)
