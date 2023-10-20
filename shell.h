@@ -142,5 +142,9 @@ char *create_new_var(char **args);
 int get_env_size(void);
 char **create_new_environ(int size);
 int update_environment(char **env_var, char **new_environ, int size);
+
+int check_args(char **args);
+int call_args(char **args, char **front, int *exe_ret);
+int handle_args(int *exe_ret);
 #endif
 

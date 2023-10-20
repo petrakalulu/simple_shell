@@ -2,6 +2,9 @@
 
 void sig_handler(int sig);
 int execute(char **args, char **front);
+int check_args(char **args);
+int call_args(char **args, char **front, int *exe_ret);
+int handle_args(int *exe_ret);
 
 /**
  * sig_handler - Prints a new prompt upon a signal.
@@ -99,7 +102,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 1)
 	{
-		ret = proc_file_commands(argv[1], exe_ret);
+		ret = comm_proc(argv[1], exe_ret);
 		free_env();
 		free_alias_list(aliases);
 		return (*exe_ret);

@@ -2,6 +2,9 @@
 
 int cant_open(char *file_path);
 int comm_proc(char *file_path, int *exe_ret);
+int check_args(char **args);
+int call_args(char **args, char **front, int *exe_ret);
+int handle_args(int *exe_ret);
 
 /**
  * cant_open - If the file doesn't exist or lacks proper permissions, print
