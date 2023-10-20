@@ -1,78 +1,75 @@
 #include "shell.h"
 
-char **copy_environment(void);
-void free_environment(void);
-char **get_environment_variable(const char *variable_name);
+char **_copyenv(void);
+void free_env(void);
+char **_getenv(const char *var);
 
 /**
- * copy_environment - Creates a deep copy of the environment variables.
+ * _copyenv - Creates a copy of the environment.
  *
- * Return: Points the copied env var. NULL if an err occurs.
+ * Return: If an error occurs - NULL.
+ *         O/w - a double pointer to the new copy.
  */
-char **copy_environment(void)
+char **_copyenv(void)
 {
-char **new_environment;
-size_t env_size;
-int m;
+	char **new_environ;
+	size_t size;
+	int index;
 
-/* Calculate the number of environment variables. */
-for (env_size = 0; (environ[env_size]; env_size++));
+	for (size = 0; environ[size]; size++)
+		;
 
-/* Allocate memory for the new environment variables array. */
-new_environment = malloc(sizeof(char *) * (env_size + 1));
-if (!new_environment)
-return (NULL);
+	new_environ = malloc(sizeof(char *) * (size + 1));
+	if (!new_environ)
+		return (NULL);
 
-/* Copy each environment variable. */
-for 
-(m = 0; (environ[m]; m++))
-{
-new_environment[m] = strdup(environ[m]);
-        
-/* If allocation fails, clean up and return NULL. */
-if (!new_environment[m])
-{
-while (m >= 0)
-free(new_environment[m--]);
-free(new_environment);
-return (NULL);
-}
-}
-new_environment[m] = NULL;
+	for (index = 0; environ[index]; index++)
+	{
+		new_environ[index] = malloc(_strlen(environ[index]) + 1);
 
-return (new_environment);
+		if (!new_environ[index])
+		{
+			for (index--; index >= 0; index--)
+				free(new_environ[index]);
+			free(new_environ);
+			return (NULL);
+		}
+		_strcpy(new_environ[index], environ[index]);
+	}
+	new_environ[index] = NULL;
+
+	return (new_environ);
 }
 
 /**
- * free_environment - Frees allocated memory for the copied env var.
+ * free_env - Frees the the environment copy.
  */
-void free_environment(void)
+void free_env(void)
 {
-int m;
+	int index;
 
-for (m = 0; environ[m]; m++)
-free(environ[m]);
-free(environ);
+	for (index = 0; environ[index]; index++)
+		free(environ[index]);
+	free(environ);
 }
 
 /**
- * get_environment_variable - Retrieves the value of an environment variable.
- * @variable_name: The name of the environment variable to retrieve.
+ * _getenv - Gets an environmental variable from the PATH.
+ * @var: The name of the environmental variable to get.
  *
- * Return: A pointer to the environment variable, or NULL if it does not exist.
+ * Return: If the environmental variable does not exist - NULL.
+ *         Otherwise - a pointer to the environmental variable.
  */
-char **get_environment_variable(const char *variable_name)
+char **_getenv(const char *var)
 {
-int m, name_length;
+	int index, len;
 
-name_length = strlen(variable_name);
+	len = _strlen(var);
+	for (index = 0; environ[index]; index++)
+	{
+		if (_strncmp(var, environ[index], len) == 0)
+			return (&environ[index]);
+	}
 
-for (m = 0; environ[m]; m++)
-{
-if (strncmp(variable_name, environ[m], name_length) == 0 && environ[m][name_length] == '=')
-return (&environ[m]);
+	return (NULL);
 }
-
-return (NULL);
-}
-

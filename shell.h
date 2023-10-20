@@ -137,4 +137,10 @@ void help_unsetenv(void);
 void help_history(void);
 
 int proc_file_commands(char *file_path, int *exe_ret);
+
+char *create_new_var(char **args);
+int get_env_size(void);
+char **create_new_environ(int size);
+int update_environment(char **env_var, char **new_environ, int size);
 #endif
+
