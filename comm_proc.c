@@ -1,7 +1,7 @@
 #include "shell.h"
 
 int cant_open(char *file_path);
-int proc_file_commands(char *file_path, int *exe_ret);
+int comm_proc(char *file_path, int *exe_ret);
 
 /**
  * cant_open - If the file doesn't exist or lacks proper permissions, print
@@ -42,7 +42,7 @@ int cant_open(char *file_path)
 }
 
 /**
- * proc_file_commands - Takes a file and attempts to run the commands stored
+ * comm_proc - Takes a file and attempts to run the commands stored
  * within.
  * @file_path: Path to the file.
  * @exe_ret: Return value of the last executed command.
@@ -51,7 +51,7 @@ int cant_open(char *file_path)
  *	   If malloc fails - -1.
  *	   Otherwise the return value of the last command ran.
  */
-int proc_file_commands(char *file_path, int *exe_ret)
+int comm_proc(char *file_path, int *exe_ret)
 {
 	ssize_t file, b_read, i;
 	unsigned int line_size = 0;

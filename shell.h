@@ -131,12 +131,12 @@ void help_alias(void);
 void help_cd(void);
 void help_exit(void);
 void help_help(void);
-void help_env(void);
-void help_setenv(void);
-void help_unsetenv(void);
+void display_env_help(void);
+void display_setenv_help(void);
+void display_unsetenv_help(void);
 void help_history(void);
 
-int proc_file_commands(char *file_path, int *exe_ret);
+int comm_proc(char *file_path, int *exe_ret);
 
 char *create_new_var(char **args);
 int get_env_size(void);
