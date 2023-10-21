@@ -6,6 +6,7 @@ int check_args(char **args);
 int call_args(char **args, char **front, int *exe_ret);
 int handle_args(int *exe_ret);
 
+
 /**
  * sig_handler - Prints a new prompt upon a signal.
  * @sig: The signal.
