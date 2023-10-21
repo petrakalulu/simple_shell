@@ -5,6 +5,7 @@ int call_args(char **args, char **front, int *exe_ret);
 int run_args(char **args, char **front, int *exe_ret);
 int handle_args(int *exe_ret);
 int check_args(char **args);
+char **replace_aliases(char **args);
 
 /**
  * get_args - Gets a command from standard input.
